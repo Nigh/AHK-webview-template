@@ -1,0 +1,28 @@
+{
+  "name": "ahk-webview-template",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A vite+tailwindcss webview template for AHK",
+  "type": "module",
+  "scripts": {
+    "dev:ahk": "ahk64 run app.ahk",
+    "dev:front": "vite",
+    "build:ahk": "ahk64 compile /in app.ahk /compress 0",
+    "build:front": "vite build",
+    "preview:front": "vite preview",
+
+    "dev": "node scripts/dev.js",
+    "dev:watch": "set AHK_WATCH=1 && node scripts/dev.js",
+    "build": "vite build && ahk64 compile /in app.ahk /compress 0",
+    "preview": "start /B app.exe"
+  },
+  "devDependencies": {
+    "ahk64": "^2.0.19",
+    "chokidar": "^4.0.3",
+    "vite": "^7.1.7"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "tailwindcss": "^4.1.13"
+  }
+}
