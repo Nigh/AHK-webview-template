@@ -3,16 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="assets/vite.svg" />
-		<link rel="stylesheet" href="./src/style.css" />
+		<link rel="stylesheet" href="./src/app.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>ahk-webview-template</title>
 		<script>
-			function onSendBtnClick() {
-				const inputValue = document.getElementById("web2ahk").value
-				if (inputValue.length == 0) return
-				document.getElementById("web2ahk").value = ""
-				ahk.Msg(inputValue)
-			}
 			window.chrome.webview.addEventListener("message", onAhkMsg)
 			const cmdFromAhk = {
 				DragWindowMouseUp: () => {
@@ -51,51 +45,7 @@
 		<div
 			class="flex flex-col items-center justify-center w-screen h-screen select-none"
 		>
-			<div class="flex flex-row justify-center items-center mb-10">
-				<div class="">
-					<a
-						onmousedown="ahk.Visit('https://autohotkey.com')"
-						href="#"
-					>
-						<img
-							width="160"
-							src="assets/autohotkey.svg"
-							class="px-4 hover:drop-shadow-[0_0_2em_#4caf50aa] duration-300"
-							alt="autohotkey logo"
-							onmouseenter="sayHello('AHK')"
-							onmouseleave="sayHello('WebView')"
-						/>
-					</a>
-				</div>
-				<div class="">
-					<a onmousedown="ahk.Visit('https://vite.dev')" href="#">
-						<img
-							width="115"
-							src="assets/vite.svg"
-							class="px-4 hover:drop-shadow-[0_0_2em_#ffcc24aa] duration-300"
-							alt="Vite logo"
-							onmouseenter="sayHello('Vite')"
-							onmouseleave="sayHello('WebView')"
-						/>
-					</a>
-				</div>
-				<div class="">
-					<a
-						onmousedown="ahk.Visit('https://tailwindcss.com')"
-						href="#"
-					>
-						<img
-							width="150"
-							src="assets/TailwindCSS.svg"
-							class="px-4 hover:drop-shadow-[0_0_2em_#38bdf8aa] duration-300"
-							alt="tailwindcss logo"
-							onmouseenter="sayHello('TailwindCSS')"
-							onmouseleave="sayHello('WebView')"
-						/>
-					</a>
-				</div>
-			</div>
-
+			<load src="./components/logos.html" />
 			<div class="flex flex-col items-center">
 				<h1
 					id="hello"
@@ -105,63 +55,18 @@
 					Hello WebView
 				</h1>
 				<div class="flex flex-row pt-4">
-					<div class="flex flex-col items-center pb-2">
-						<span class="text-xl font-bold">Frontend to AHK</span>
-						<input
-							type="text"
-							id="web2ahk"
-							placeholder="text you want to send to AHK script"
-							class="text-center w-80 border-2 border-gray-300 bg-white/5 rounded-md px-2 py-3"
-						/>
-						<button
-							type="button"
-							class="mt-2 w-40 border-2 border-green-500 hover:bg-green-600"
-							onclick="onSendBtnClick()"
-						>
-							Send to AHK
-						</button>
-					</div>
-					<div class="mx-8 w-[1px] bg-current/20"></div>
-					<div class="flex flex-col items-center pb-2">
-						<span class="text-xl font-bold">AHK to Frontend</span>
-						<input
-							type="text"
-							id="ahk2web"
-							placeholder="text receive from AHK script"
-							class="text-center w-80 border-2 border-gray-300 bg-white/5 rounded-md px-2 py-3"
-							readonly
-						/>
-						<div class="mt-4">
-							Press
-							<span class="font-bold px-2 border-2 rounded-lg"
-								>F1</span
-							>
-							to send message from AHK
-						</div>
-					</div>
+					<load src="./components/front2ahk.html" />
+					<div class="divider divider-horizontal"></div>
+					<load src="./components/ahk2front.html" />
 				</div>
+					<div class="divider"></div>
 				<div
-					class="flex flex-col mb-10 border-t-2 border-current/20 pt-4"
+					class="flex flex-col mb-10"
 				>
-					<span class="text-xl font-bold">Frontend Counter</span>
-					<button
-						id="counter"
-						type="button"
-						class="hover:bg-purple-600 border-2 border-purple-500"
-					></button>
+					<load src="./components/counter.html" />
 				</div>
-				<p class="read-the-docs">
-					Click
-					<a
-						class="hover:bg-green-500 hover:text-white text-green-600 duration-300 rounded-lg px-1"
-						href="#"
-						onmousedown="ahk.Visit('https://github.com/Nigh/ahk-webview-template')"
-						>here</a
-					>
-					to learn more about this template
-				</p>
+				<load src="./components/footer.html" />
 			</div>
 		</div>
-		<script type="module" src="/src/main.js"></script>
 	</body>
 </html>
