@@ -35,38 +35,88 @@
 			function sayHello(s) {
 				document.getElementById("hello").innerHTML = "Hello " + s
 			}
-			function dragMe() {
-				document.getElementById("hello").innerHTML = "Drag Me"
-				ahk.DragStart("")
-			}
 		</script>
 	</head>
-	<body>
+	<body class="overflow-hidden h-screen w-screen relative select-none">
 		<div
-			class="flex flex-col items-center justify-center w-screen h-screen select-none"
+			id="pages"
+			class="flex h-full w-[400%] transition-transform duration-500 ease-in-out"
 		>
-			<load src="./components/logos.html" />
-			<div class="flex flex-col items-center">
-				<h1
-					id="hello"
-					onmousedown="dragMe()"
-					class="text-5xl font-bold mb-4"
-				>
-					Hello WebView
-				</h1>
-				<div class="flex flex-row pt-4">
-					<load src="./components/front2ahk.html" />
-					<div class="divider divider-horizontal"></div>
-					<load src="./components/ahk2front.html" />
-				</div>
-					<div class="divider"></div>
+			<section
+				class="w-1/4 h-full flex flex-col justify-center items-center"
+			>
 				<div
-					class="flex flex-col mb-10"
+					class="flex flex-col justify-center w-full h-full select-none"
 				>
-					<load src="./components/counter.html" />
+					<load src="./components/logos.html" />
+					<div class="flex flex-col items-center">
+						<load src="./components/title.html" />
+						<div class="flex flex-row pt-4">
+							<load src="./components/front2ahk.html" />
+							<div class="divider divider-horizontal"></div>
+							<load src="./components/ahk2front.html" />
+						</div>
+						<div class="divider"></div>
+						<div class="flex flex-col mb-10">
+							<load src="./components/counter.html" />
+						</div>
+						<load src="./components/footer.html" />
+					</div>
 				</div>
-				<load src="./components/footer.html" />
+			</section>
+			<section
+				class="w-1/4 h-full flex flex-row justify-center items-center gap-4 px-8"
+			>
+				<load src="./components/register.html" />
+			</section>
+			<section
+				class="w-1/4 h-full flex flex-row justify-center items-center gap-4 px-8"
+			>
+				<load src="./components/range.html" />
+				<load src="./components/player.html" />
+			</section>
+			<section
+				class="w-1/4 h-full flex flex-col justify-center items-center gap-4 px-8"
+			>
+				<div class="flex flex-row gap-4">
+					<load src="./components/score.html" />
+					<load src="./components/score2.html" />
+				</div>
+				<div class="flex flex-row gap-4 justify-center">
+					<load src="./components/post.html" />
+					<load src="./components/chart.html" />
+				</div>
+			</section>
+		</div>
+		<div class="dock border-0">
+			<div id="pagination" class="flex flex-row gap-4">
+				<input
+					type="radio"
+					name="pagination-main"
+					value="0"
+					class="radio radio-xs border-0 bg-white/15 checked:bg-white transition-translate duration-300"
+					checked="checked"
+				/>
+				<input
+					type="radio"
+					name="pagination-main"
+					value="1"
+					class="radio radio-xs border-0 bg-white/15 checked:bg-white transition-translate duration-300"
+				/>
+				<input
+					type="radio"
+					name="pagination-main"
+					value="2"
+					class="radio radio-xs border-0 bg-white/15 checked:bg-white transition-translate duration-300"
+				/>
+				<input
+					type="radio"
+					name="pagination-main"
+					value="3"
+					class="radio radio-xs border-0 bg-white/15 checked:bg-white transition-translate duration-300"
+				/>
 			</div>
 		</div>
+		<script type="module" src="./src/main.js"></script>
 	</body>
 </html>

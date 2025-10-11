@@ -1,0 +1,10 @@
+<h1 id="hello" onmousedown="dragMe()" class="text-5xl font-bold mb-4">
+	Hello WebView
+</h1>
+
+<script>
+	function dragMe() {
+		document.getElementById("hello").innerHTML = "Drag Me"
+		ahk.DragStart("")
+	}
+</script>
