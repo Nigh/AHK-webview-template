@@ -10,7 +10,6 @@
     "build:ahk": "ahk64 compile /in app.ahk /compress 0",
     "build:front": "vite build",
     "preview:front": "vite preview",
-
     "dev": "node scripts/dev.js",
     "dev:watch": "set AHK_WATCH=1 && node scripts/dev.js",
     "build": "vite build && ahk64 compile /in app.ahk /compress 0",
@@ -19,7 +18,9 @@
   "devDependencies": {
     "ahk64": "^2.0.19",
     "chokidar": "^4.0.3",
-    "vite": "^7.1.7"
+    "daisyui": "^5.1.29",
+    "vite": "^7.1.7",
+    "vite-plugin-html-inject": "^1.1.2"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
