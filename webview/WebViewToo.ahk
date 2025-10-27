@@ -675,8 +675,17 @@ class WebViewCtrl extends Gui.Custom {
 
         if (Target is String) {
             Headers := ""
-            if (Path ~= "i)\.js$") {
-                Headers .= "Content-Type: text/javascript;"
+            if (RegExMatch(Path, "i)\.([a-z0-9]+)$", &m)) {
+                ext := StrLower(m[1])
+                if (ext = "js" || ext = "mjs") {
+                    Headers .= "Content-Type: text/javascript;"
+                } else if (ext = "css") {
+                    Headers .= "Content-Type: text/css;"
+                } else if (ext = "html" || ext = "htm") {
+                    Headers .= "Content-Type: text/html;"
+                } else if (ext = "json" || ext = "map") {
+                    Headers .= "Content-Type: application/json;"
+                }
             }
             Stream := WebView2.CreateTextStream(Target)
             Args.Response := ICoreWebView2.Environment.CreateWebResourceResponse(Stream, 200, "OK", Headers)
@@ -685,12 +694,59 @@ class WebViewCtrl extends Gui.Custom {
 
         if (Target is WebView2.Stream) {
             Headers := ""
-			if(RegExMatch(Args.Request.Uri, "i)\.js$")) {
-				Headers .= "Content-Type: text/javascript;"
-			}
-			if(RegExMatch(Args.Request.Uri, "i)\.svg$")) {
-				Headers .= "Content-Type: image/svg+xml;"
-			}
+            ; Determine content type from requested path (ignore querystring)
+            if (RegExMatch(Path, "i)\.([a-z0-9]+)$", &m)) {
+                ext := StrLower(m[1])
+                if (ext = "js" || ext = "mjs") {
+                    Headers .= "Content-Type: text/javascript;"
+                } else if (ext = "css") {
+                    Headers .= "Content-Type: text/css;"
+                } else if (ext = "html" || ext = "htm") {
+                    Headers .= "Content-Type: text/html;"
+                } else if (ext = "svg") {
+                    Headers .= "Content-Type: image/svg+xml;"
+                } else if (ext = "png") {
+                    Headers .= "Content-Type: image/png;"
+                } else if (ext = "jpg" || ext = "jpeg") {
+                    Headers .= "Content-Type: image/jpeg;"
+                } else if (ext = "gif") {
+                    Headers .= "Content-Type: image/gif;"
+                } else if (ext = "webp") {
+                    Headers .= "Content-Type: image/webp;"
+                } else if (ext = "ico") {
+                    Headers .= "Content-Type: image/x-icon;"
+                } else if (ext = "json" || ext = "map") {
+                    Headers .= "Content-Type: application/json;"
+                } else if (ext = "wasm") {
+                    Headers .= "Content-Type: application/wasm;"
+                } else if (ext = "pdf") {
+                    Headers .= "Content-Type: application/pdf;"
+                } else if (ext = "txt" || ext = "log") {
+                    Headers .= "Content-Type: text/plain;"
+                } else if (ext = "xml") {
+                    Headers .= "Content-Type: application/xml;"
+                } else if (ext = "csv") {
+                    Headers .= "Content-Type: text/csv;"
+                } else if (ext = "mp3") {
+                    Headers .= "Content-Type: audio/mpeg;"
+                } else if (ext = "wav") {
+                    Headers .= "Content-Type: audio/wav;"
+                } else if (ext = "ogg" || ext = "oga") {
+                    Headers .= "Content-Type: audio/ogg;"
+                } else if (ext = "mp4") {
+                    Headers .= "Content-Type: video/mp4;"
+                } else if (ext = "webm") {
+                    Headers .= "Content-Type: video/webm;"
+                } else if (ext = "woff") {
+                    Headers .= "Content-Type: font/woff;"
+                } else if (ext = "woff2") {
+                    Headers .= "Content-Type: font/woff2;"
+                } else if (ext = "ttf") {
+                    Headers .= "Content-Type: font/ttf;"
+                } else if (ext = "otf") {
+                    Headers .= "Content-Type: font/otf;"
+                }
+            }
             Args.Response := ICoreWebView2.Environment.CreateWebResourceResponse(Target, 200, "OK", Headers)
             return
         }
