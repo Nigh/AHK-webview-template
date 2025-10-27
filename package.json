@@ -5,6 +5,7 @@
   "description": "A vite+tailwindcss webview template for AHK",
   "type": "module",
   "scripts": {
+    "predev:ahk": "ahk64 run gen_resource.ahk",
     "dev:ahk": "ahk64 run app.ahk",
     "dev:front": "vite",
     "prebuild:ahk": "ahk64 run gen_resource.ahk",
