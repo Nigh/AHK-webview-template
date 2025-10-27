@@ -74,7 +74,7 @@ trueExit(ExitReason, ExitCode){
 	ExitApp(ExitCode)
 }
 
-#Include resource.ahk
+#Include ./resource.ahk
 
 ;@Ahk2Exe-IgnoreBegin
 ; For dev
