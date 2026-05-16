@@ -16,8 +16,9 @@ frontend/
   src/
     main.js              # Page navigation and AHK message handling
     counter.js           # Standalone frontend counter component
+    stepper.js           # Stepper control logic
     app.css              # TailwindCSS v4 + DaisyUI v5 theme config
-  components/            # HTML partials injected via vite-plugin-html-inject
+  components/            # 20 HTML partials injected via vite-plugin-html-inject
   public/assets/         # Static assets (images, fonts)
 scripts/
   dev.js                 # Dev orchestrator — runs Vite + AHK concurrently
