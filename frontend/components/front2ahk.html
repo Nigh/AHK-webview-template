@@ -1,0 +1,20 @@
+<div class="flex flex-col items-center pb-2">
+	<span class="text-xl font-bold">Frontend to AHK</span>
+	<input
+		type="text"
+		id="web2ahk"
+		placeholder="text you want to send to AHK script"
+		class="input input-primary text-center w-80 bg-white/5 border-2"
+	/>
+	<button class="btn btn-accent mt-2 w-40" onclick="onSendBtnClick()">
+		Send to AHK
+	</button>
+</div>
+<script>
+	function onSendBtnClick() {
+		const inputValue = document.getElementById("web2ahk").value
+		if (inputValue.length == 0) return
+		document.getElementById("web2ahk").value = ""
+		ahk.Msg(inputValue)
+	}
+</script>

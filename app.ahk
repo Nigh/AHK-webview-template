@@ -42,7 +42,7 @@ testMessager() {
 }
 ahkSendMsg2Web := testMessager()
 Hotkey("~F1", ahkSendMsg2Web)
-MyGui.Show("w800 h600")
+MyGui.Show("w820 h700")
 return
 
 WebviewVisit(webview, msg) {
@@ -74,7 +74,7 @@ trueExit(ExitReason, ExitCode){
 	ExitApp(ExitCode)
 }
 
-#Include resource.ahk
+#Include ./resource.ahk
 
 ;@Ahk2Exe-IgnoreBegin
 ; For dev
