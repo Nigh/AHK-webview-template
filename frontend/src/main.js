@@ -1,14 +1,25 @@
 const pages = document.getElementById("pages")
-let currentPage = 0
+// let currentPage = 0
 
-// let currentPage = 3
-// updatePage()
-// setPagination(currentPage)
+let currentPage = 1
+updatePage()
+setPagination(currentPage)
 
 const form = document.querySelector("#pagination")
 
+export function currentPageTitle() {
+	const titles=[
+		"AHK WebView Template",
+		"Register Example",
+		"Controller Example",
+		"DaisyUI Sample"
+	]
+	document.getElementById("hello").innerHTML = titles[currentPage]
+}
+
 function updatePage() {
 	pages.style.transform = `translateX(-${currentPage * 25}%)`
+	currentPageTitle()
 }
 
 function setPagination(value) {
@@ -61,11 +72,11 @@ window.addEventListener(
 		const move = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY
 
 		if (move > 40 && currentPage < 3) {
-			currentPage += 1
+			currentPage = Number(currentPage) + Number(1)
 			updatePage()
 			setPagination(currentPage)
 		} else if (move < -40 && currentPage > 0) {
-			currentPage -= 1
+			currentPage = Number(currentPage) - Number(1)
 			updatePage()
 			setPagination(currentPage)
 		}

@@ -1,4 +1,4 @@
-<div class="card bg-base-100 card-border border-base-300 card-sm">
+<div class="card bg-base-200 card-border border-base-300 card-sm">
 	<div class="card-body gap-4">
 		<h2 class="flex items-center justify-between">
 			<span class="flex items-center gap-2 font-semibold"
@@ -24,7 +24,14 @@
 				Price range</span
 			>
 		</h2>
-		<div class="text-center text-5xl font-extralight">62</div>
-		<input type="range" class="range range-sm" />
+		<div class="text-center text-5xl font-extralight" id="range-display">62</div>
+		<input type="range" class="range range-sm" id="price-range" value="62" />
+		<script type="module">
+			const rangeInput = document.getElementById('price-range')
+			const rangeDisplay = document.getElementById('range-display')
+			rangeInput.addEventListener('input', (e) => {
+				rangeDisplay.textContent = e.target.value
+			})
+		</script>
 	</div>
 </div>
