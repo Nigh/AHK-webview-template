@@ -8,7 +8,7 @@
 		<title>ahk-webview-template</title>
 		<script type="module" src="./src/main.js"></script>
 		<script type="module">
-			import { currentPageTitle } from "./src/main.js";
+			import { currentPageTitle } from "./src/main.js"
 			window.chrome.webview.addEventListener("message", onAhkMsg)
 			const cmdFromAhk = {
 				DragWindowMouseUp: () => {
@@ -35,6 +35,34 @@
 				}
 			}
 		</script>
+		<style>
+			#page-register {
+				background-image: linear-gradient(
+						to bottom,
+						var(--color-base-100) 4%,
+						rgba(255, 255, 255, 0) 60%
+					),
+					linear-gradient(
+						to top,
+						var(--color-base-100) 4%,
+						rgba(255, 255, 255, 0) 60%
+					),
+					linear-gradient(
+						to right,
+						var(--color-base-100) 3%,
+						rgba(24, 24, 24, 0) 55%
+					),
+					linear-gradient(
+						to left,
+						var(--color-base-100) 3%,
+						rgba(24, 24, 24, 0) 55%
+					),
+					url("assets/bg.webp");
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+		</style>
 	</head>
 	<body class="overflow-hidden h-screen w-screen relative select-none">
 		<div class="flex flex-col h-full w-full">
@@ -67,15 +95,29 @@
 					</div>
 				</section>
 				<section
+					id="page-register"
 					class="w-1/4 h-full flex flex-row justify-center items-center gap-4 px-8"
 				>
 					<load src="./components/register.html" />
 				</section>
 				<section
-					class="w-1/4 h-full flex flex-row justify-center items-center gap-4 px-8"
+					class="w-1/4 h-full flex flex-col justify-center items-center gap-4 px-8 py-4 overflow-y-auto"
 				>
-					<load src="./components/range.html" />
-					<load src="./components/player.html" />
+					<div class="flex flex-row gap-4 w-full">
+						<load src="./components/toggle.html" />
+						<load src="./components/range.html" />
+						<load src="./components/progress.html" />
+					</div>
+					<div class="flex flex-row gap-4 w-full">
+						<load src="./components/select.html" />
+						<load src="./components/stepper.html" />
+						<load src="./components/rating.html" />
+					</div>
+					<div class="flex flex-row gap-4 w-full">
+						<load src="./components/btnGroup.html" />
+						<load src="./components/volumes.html" />
+						<load src="./components/checkbox.html" />
+					</div>
 				</section>
 				<section
 					class="flex flex-col w-1/4 h-full justify-center items-center gap-4 px-8"

@@ -1,7 +1,7 @@
 const pages = document.getElementById("pages")
 // let currentPage = 0
 
-let currentPage = 3
+let currentPage = 1
 updatePage()
 setPagination(currentPage)
 
@@ -11,7 +11,7 @@ export function currentPageTitle() {
 	const titles=[
 		"AHK WebView Template",
 		"Register Example",
-		"Controller Example(WIP)",
+		"Controller Example",
 		"DaisyUI Sample"
 	]
 	document.getElementById("hello").innerHTML = titles[currentPage]
