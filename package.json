@@ -15,7 +15,8 @@
     "dev": "node scripts/dev.js",
     "dev:watch": "set AHK_WATCH=1 && node scripts/dev.js",
     "build": "npm run build:front && npm run build:ahk",
-    "preview": "start /B app.exe"
+    "preview": "start /B app.exe",
+    "init": "node scripts/init-workspace.js"
   },
   "devDependencies": {
     "ahk64": "^2.0.19",
