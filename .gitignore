@@ -6,6 +6,7 @@ resource.ahk
 .vscode
 dist/
 *.ini
+.kilo
 
 # Windows image file caches
 Thumbs.db

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="assets/vite.svg" />
+		<link rel="stylesheet" href="./src/app.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AHK WebView App</title>
+		<script>
+			window.chrome.webview.addEventListener("message", (Msg) => {
+				if (
+					Msg.data &&
+					typeof Msg.data == "object" &&
+					Msg.data.type &&
+					Msg.data.type.length > 0
+				) {
+					switch (Msg.data.type) {
+						case "msg":
+							document.getElementById("input-box").value =
+								Msg.data.content
+							break
+					}
+				}
+			})
+
+			function onConfirm() {
+				const input = document.getElementById("input-box")
+				const value = input.value.trim()
+				if (value.length === 0) return
+				input.value = ""
+				ahk.Msg("Hello " + value)
+			}
+
+			function onExit() {
+				ahk.Exit("")
+			}
+		</script>
+	</head>
+	<body class="overflow-hidden h-screen w-screen relative select-none">
+		<div class="flex flex-col h-full w-full justify-center items-center gap-6">
+			<input
+				type="text"
+				id="input-box"
+				placeholder="Enter text here..."
+				class="input input-primary text-center w-80 bg-white/5 border-2"
+			/>
+			<div class="flex flex-row gap-4">
+				<button class="btn btn-accent w-36" onclick="onConfirm()">
+					Confirm
+				</button>
+				<button class="btn btn-error w-36" onclick="onExit()">
+					Reload
+				</button>
+			</div>
+		</div>
+	</body>
+</html>

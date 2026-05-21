@@ -50,6 +50,7 @@
 ahk-webview-template/
 ├── frontend/
 │   ├── index.html                 # 入口文件 — 通过 <load> 标签加载组件
+│   ├── index2.html                # 简洁单页模板（输入框 + 确定 + 退出）
 │   ├── src/
 │   │   ├── app.css                # TailwindCSS v4 + DaisyUI v5 自定义暗色主题
 │   │   ├── main.js                # 页面导航 + AHK 消息处理
@@ -78,7 +79,8 @@ ahk-webview-template/
 │   │   └── footer.html            #   页脚
 │   └── public/assets/             # 静态资源（图片、字体）
 ├── scripts/
-│   └── dev.js                     # 开发编排器 — 并发运行 Vite + AHK
+│   ├── dev.js                     # 开发编排器 — 并发运行 Vite + AHK
+│   └── init-workspace.js          # 工作区初始化器 — 清除模板演示，创建简洁工作区
 ├── webview/                       # WebViewToo 库（第三方，勿修改）
 │   ├── WebViewToo.ahk
 │   ├── WebView2.ahk
@@ -137,6 +139,16 @@ npm run build
 npm run preview
 ```
 
+### 创建简洁工作区
+
+清除所有模板演示内容，从一个最小化的单页应用开始（一个输入框 + 确定/退出按钮）：
+
+```sh
+npm run init
+```
+
+此命令会将 `index.html` 替换为简洁布局，简化 `app.ahk`，并移除所有模板组件、演示脚本和未使用的静态资源。之后你可以在此基础上开发自己的应用。
+
 ## 架构
 
 ### AHK ↔ 前端通信
@@ -187,6 +199,7 @@ MyGui.AddCallbackToScript("Msg", WebviewMsg)
 | `npm run build:front` | 仅构建前端 |
 | `npm run build:ahk` | 仅编译 AHK |
 | `npm run preview` | 运行编译后的 `app.exe` |
+| `npm run init` | 清除模板演示，创建简洁工作区 |
 
 ## 许可证
 

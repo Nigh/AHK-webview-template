@@ -50,6 +50,7 @@ Navigate between pages by scrolling or clicking the pagination dots at the botto
 ahk-webview-template/
 ├── frontend/
 │   ├── index.html                 # Entry point — loads components via <load> tags
+│   ├── index2.html                # Clean single-page template (input + Confirm + Exit)
 │   ├── src/
 │   │   ├── app.css                # TailwindCSS v4 + DaisyUI v5 custom dark theme
 │   │   ├── main.js                # Page navigation + AHK message handler
@@ -78,7 +79,8 @@ ahk-webview-template/
 │   │   └── footer.html            #   Page footer
 │   └── public/assets/             # Static assets (images, fonts)
 ├── scripts/
-│   └── dev.js                     # Dev orchestrator — runs Vite + AHK concurrently
+│   ├── dev.js                     # Dev orchestrator — runs Vite + AHK concurrently
+│   └── init-workspace.js          # Workspace initializer — strips demo, creates clean workspace
 ├── webview/                       # WebViewToo library (third-party, do not modify)
 │   ├── WebViewToo.ahk
 │   ├── WebView2.ahk
@@ -137,6 +139,16 @@ Run the compiled binary:
 npm run preview
 ```
 
+### Create a Clean Workspace
+
+To strip all template demo content and start with a minimal single-page app (one input box + Confirm/Exit buttons):
+
+```sh
+npm run init
+```
+
+This replaces `index.html` with a clean layout, simplifies `app.ahk`, and removes all template components, demo scripts, and unused assets. You can then start building your own app on top of this clean foundation.
+
 ## Architecture
 
 ### AHK ↔ Frontend Communication
@@ -187,6 +199,7 @@ The `gen_resource.ahk` script generates `resource.ahk` which embeds all `dist/` 
 | `npm run build:front` | Build frontend only |
 | `npm run build:ahk` | Compile AHK only |
 | `npm run preview` | Run compiled `app.exe` |
+| `npm run init` | Strip template demo and create a clean workspace |
 
 ## License
 

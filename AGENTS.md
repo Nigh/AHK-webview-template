@@ -13,6 +13,7 @@ resource.ahk             # Generated file — do not edit manually
 vite.config.js           # Vite config (root: frontend/, output: dist/)
 frontend/
   index.html             # Frontend entry — loads components via <load> tags
+  index2.html            # Clean single-page template (input + Confirm + Exit) used by `npm run init`
   src/
     main.js              # Page navigation and AHK message handling
     counter.js           # Standalone frontend counter component
@@ -22,6 +23,7 @@ frontend/
   public/assets/         # Static assets (images, fonts)
 scripts/
   dev.js                 # Dev orchestrator — runs Vite + AHK concurrently
+  init-workspace.js      # Workspace initializer — strips template demo, creates clean workspace
 webview/                 # WebViewToo library (WebView2 wrapper for AHK)
 dist/                    # Build output (generated)
 ```
@@ -37,6 +39,7 @@ dist/                    # Build output (generated)
 | `npm run build:ahk` | Compile AHK script to `app.exe` (requires ahk64 CLI) |
 | `npm run build` | Full build (frontend + AHK compilation) |
 | `npm run preview` | Run compiled `app.exe` |
+| `npm run init` | Strip template demo and create a clean workspace for custom development |
 
 Press `F6` in dev mode to reload the AHK script. Press `Ctrl+C` to exit dev mode.
 
@@ -46,6 +49,7 @@ Press `F6` in dev mode to reload the AHK script. Press `Ctrl+C` to exit dev mode
 - **Component loading**: HTML partials in `frontend/components/` are loaded into `index.html` using `<load src="...">` syntax (processed by `vite-plugin-html-inject`).
 - **Dev vs compiled**: In dev mode, AHK navigates to `http://localhost:5173` (Vite dev server). In compiled mode, it loads `index.html` from embedded resources.
 - **Theming**: DaisyUI custom dark theme defined in `frontend/src/app.css` using `@plugin "daisyui/theme"`.
+- **Workspace init**: `npm run init` replaces `index.html` with a minimal single-page (`index2.html`), simplifies `app.ahk`, and removes all template demo files (components, demo JS, unused assets). Use this to start a new project from a clean slate.
 
 ## Coding Conventions
 
