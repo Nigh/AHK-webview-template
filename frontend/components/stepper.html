@@ -1,0 +1,27 @@
+<div class="card bg-base-200 card-border border-base-300 card-sm">
+	<div class="card-body gap-4">
+		<h2 class="flex items-center gap-2 font-semibold">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="size-5 opacity-40"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+				></path>
+			</svg>
+			Stepper
+		</h2>
+		<div class="flex items-center justify-center gap-4">
+			<button class="btn btn-square btn-sm" id="stepper-minus">-</button>
+			<span class="text-3xl font-light w-16 text-center" id="stepper-value">0</span>
+			<button class="btn btn-square btn-sm" id="stepper-plus">+</button>
+		</div>
+		<script type="module" src="/src/stepper.js"></script>
+	</div>
+</div>

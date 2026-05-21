@@ -1,0 +1,10 @@
+<div onmousedown="dragMe()" class="btn btn-ghost w-full h-fit text-center mt-0 transition duration-500">
+	<span id="hello" class="text-5xl font-bold mb-2">Hello WebView</span>
+</div>
+
+<script>
+	function dragMe() {
+		document.getElementById("hello").innerHTML = "Drag Me"
+		ahk.DragStart("")
+	}
+</script>
